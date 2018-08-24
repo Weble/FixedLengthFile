@@ -139,6 +139,16 @@ class Document implements Arrayable
     }
 
     /**
+     * @param $file
+     */
+    public function write($file)
+    {
+        $file = fopen($file, 'w');
+        fwrite($file, (string) $this);
+        fclose($file);
+    }
+
+    /**
      * @return array
      */
     public function toArray ()
