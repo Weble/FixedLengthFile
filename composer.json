@@ -1,0 +1,25 @@
+{
+  "name": "webleit/fixedlengthfile",
+  "description": "Fixed Length File for PHP",
+  "license": "MIT",
+  "keywords": ["fixed", "length", "file", "txt"],
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Daniele Rosario",
+      "email": "daniele@weble.it"
+    }
+  ],
+  "require": {
+    "php" : ">=7.0.0",
+    "phpunit/phpunit": "^6.5",
+    "tightenco/collect": "^5.5"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Webleit\\FixedLengthFile\\": "src"
+    }
+  }
+}
