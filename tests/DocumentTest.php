@@ -10,6 +10,7 @@ use Webleit\FixedLengthFile\Field;
 use Webleit\FixedLengthFile\Record;
 use Webleit\FixedLengthFile\RecordStructure;
 use Webleit\FixedLengthFile\Document;
+use Webleit\FixedLengthFile\Writer\MemoryWriter;
 
 /**
  * Class ClassNameGeneratorTest
@@ -22,7 +23,7 @@ class DocumentTest extends TestCase
      */
     public function full_test ()
     {
-        $writer = new Document();
+        $writer = new MemoryWriter();
         $writer->setCarriageReturn("\r\n");
 
         $record = new Record($this->getHeaderRecordStructure());
@@ -58,7 +59,7 @@ class DocumentTest extends TestCase
      */
     public function full_test_product ()
     {
-        $writer = new Document();
+        $writer = new MemoryWriter();
         $writer->setCarriageReturn("\r\n");
 
         $record = new Record($this->getHeaderRecordStructure());
@@ -94,7 +95,7 @@ class DocumentTest extends TestCase
      */
     public function full_test_img ()
     {
-        $writer = new Document();
+        $writer = new MemoryWriter();
         $writer->setCarriageReturn("\r\n");
 
         $record = new Record($this->getHeaderRecordStructureImg());
@@ -130,14 +131,14 @@ class DocumentTest extends TestCase
      */
     public function test_tostring ()
     {
-        $writer = new Document();
+        $writer = new MemoryWriter();
         $record = new Record($this->getTestRecordStructure());
         $record->set('foo', '12345');
         $record->set('bar', '1234567890');
 
         $writer->addRecord($record);
 
-        $this->assertEquals(40, strlen((string) $writer));
+        $this->assertEquals(40 + strlen($writer->getCarriageReturn()) , strlen((string) $writer));
 
         $record = new Record($this->getTestRecordStructure());
         $record->set('foo', '12345');
@@ -145,7 +146,7 @@ class DocumentTest extends TestCase
 
         $writer->addRecord($record);
 
-        $this->assertEquals(80 + ($writer->recordsCount() - 1 * strlen($writer->getCarriageReturn())) ,  strlen((string) $writer));
+        $this->assertEquals(80 + ($writer->recordsCount() * strlen($writer->getCarriageReturn())) ,  strlen((string) $writer));
     }
 
     /**

@@ -1,13 +1,15 @@
 <?php
 
-namespace Webleit\FixedLengthFile;
+namespace Webleit\FixedLengthFile\Writer;
+
 use Tightenco\Collect\Contracts\Support\Arrayable;
+use Webleit\FixedLengthFile\Record;
 
 /**
  * Class Writer
  * @package Webleit\FixedLengthFile
  */
-class Document implements Arrayable
+abstract class Writer implements Arrayable
 {
     /**
      * @var string
@@ -27,7 +29,7 @@ class Document implements Arrayable
     /**
      * @var string
      */
-    protected $carriageReturn = "\n";
+    protected $carriageReturn = "\r\n";
 
     /**
      * @var string
@@ -51,11 +53,14 @@ class Document implements Arrayable
     }
 
     /**
-     * @param string $carriageReturn
+     * @param $carriageReturn
+     * @return $this
      */
     public function setCarriageReturn ($carriageReturn)
     {
         $this->carriageReturn = $carriageReturn;
+
+        return $this;
     }
 
     /**
@@ -87,39 +92,40 @@ class Document implements Arrayable
      */
     public function __toString ()
     {
-        $string = "";
-        $firstLine = true;
+        return $this->write();
+    }
 
-        /** @var Record $record */
-        foreach ($this->records as $record) {
+    /**
+     * @param Record $record
+     * @return string
+     */
+    public function getRecordContent(Record $record)
+    {
+        $row = '';
+        $position = 0;
 
-            if (!$firstLine) {
-                $string .= $this->getCarriageReturn();
+        $fields = $record->getStructure()->getFields();
+
+        /**
+         * @var $field RecordField
+         */
+        foreach ($fields as $key => $field) {
+            $start = $field->getStart();
+            $end = $field->end;
+
+            if ($start > $position) {
+                $row = str_pad($row, $start - $position, $this->getEmptyCharacter());
             }
 
-            $firstLine = false;
-            $fields = $record->getStructure()->getFields();
-            $position = 0;
+            $position = $end;
+            $value = $record->get($key, '');
 
-            /**
-             * @var $field RecordField
-             */
-            foreach ($fields as $key => $field) {
-                $start = $field->getStart();
-                $end = $field->end;
-
-                if ($start > $position) {
-                    $string = str_pad($string, $start - $position, $this->getEmptyCharacter());
-                }
-
-                $value = $record->get($key, '');
-                $string .= str_pad($value, $field->getLength(), $this->getEmptyCharacter());
-
-                $position = $end;
-            }
+            $row .= str_pad($value, $field->getLength(), $this->getEmptyCharacter());
         }
 
-        return $string;
+        $row .= $this->getCarriageReturn();
+
+        return $row;
     }
 
     /**
@@ -139,20 +145,30 @@ class Document implements Arrayable
     }
 
     /**
-     * @param $file
-     */
-    public function write($file)
-    {
-        $file = fopen($file, 'w');
-        fwrite($file, (string) $this);
-        fclose($file);
-    }
-
-    /**
      * @return array
      */
     public function toArray ()
     {
         return $this->records->toArray();
     }
+
+    /**
+     * @param Record $record
+     * @return $this
+     */
+    abstract function writeRecord (Record $record);
+
+    /**
+     * Write the full document
+     */
+    public function write ()
+    {
+        foreach ($this->records as $record) {
+            $this->writeRecord($record);
+        }
+
+        return $this;
+    }
+
+
 }
