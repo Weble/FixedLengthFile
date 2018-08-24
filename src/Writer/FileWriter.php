@@ -2,6 +2,8 @@
 
 namespace Webleit\FixedLengthFile\Writer;
 
+use Webleit\FixedLengthFile\Record;
+
 /**
  * Class Writer
  * @package Webleit\FixedLengthFile
