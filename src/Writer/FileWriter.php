@@ -23,10 +23,6 @@ class FileWriter extends Writer
         parent::__construct();
 
         $this->file = $file;
-
-        if (file_exists($this->file)) {
-            unlink($this->file);
-        }
     }
 
     /**
