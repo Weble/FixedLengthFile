@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d0580dc30c96b269268179c304cc1df",
+    "content-hash": "ac9e2f3e1b30fa916dd93ae4d5bba5ab",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1434,7 +1434,7 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.4.14",
+            "version": "v3.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
