@@ -19,7 +19,7 @@ class MemoryWriter extends Writer
      * @param Record $record
      * @return $this|mixed
      */
-    public function writeRecord (Record $record)
+    public function writeRecord(Record $record)
     {
         $this->string .= $this->getRecordContent($record);
 
@@ -29,7 +29,7 @@ class MemoryWriter extends Writer
     /**
      * @return $this
      */
-    public function write ()
+    public function write()
     {
         $this->string = '';
 
@@ -39,7 +39,7 @@ class MemoryWriter extends Writer
     /**
      * @return string
      */
-    public function __toString ()
+    public function __toString()
     {
         $this->write();
 

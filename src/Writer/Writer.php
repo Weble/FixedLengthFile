@@ -39,7 +39,7 @@ abstract class Writer implements Arrayable
     /**
      * Writer constructor.
      */
-    public function __construct ()
+    public function __construct()
     {
         $this->records = collect([]);
     }
@@ -47,7 +47,7 @@ abstract class Writer implements Arrayable
     /**
      * @param Record $record
      */
-    public function addRecord (Record $record)
+    public function addRecord(Record $record)
     {
         $this->records->push($record);
     }
@@ -56,7 +56,7 @@ abstract class Writer implements Arrayable
      * @param $carriageReturn
      * @return $this
      */
-    public function setCarriageReturn ($carriageReturn)
+    public function setCarriageReturn($carriageReturn)
     {
         $this->carriageReturn = $carriageReturn;
 
@@ -66,7 +66,7 @@ abstract class Writer implements Arrayable
     /**
      * @return string
      */
-    public function getCarriageReturn ()
+    public function getCarriageReturn()
     {
         return $this->carriageReturn;
     }
@@ -74,7 +74,7 @@ abstract class Writer implements Arrayable
     /**
      * @param string $emptyCharacter
      */
-    public function setEmptyCharacter ($emptyCharacter)
+    public function setEmptyCharacter($emptyCharacter)
     {
         $this->emptyCharacter = $emptyCharacter;
     }
@@ -82,7 +82,7 @@ abstract class Writer implements Arrayable
     /**
      * @return string
      */
-    public function getEmptyCharacter ()
+    public function getEmptyCharacter()
     {
         return $this->emptyCharacter;
     }
@@ -90,7 +90,7 @@ abstract class Writer implements Arrayable
     /**
      * @return string
      */
-    public function __toString ()
+    public function __toString()
     {
         return $this->write();
     }
@@ -131,7 +131,7 @@ abstract class Writer implements Arrayable
     /**
      * @return \Tightenco\Collect\Support\Collection
      */
-    public function getRecords ()
+    public function getRecords()
     {
         return $this->records;
     }
@@ -139,7 +139,7 @@ abstract class Writer implements Arrayable
     /**
      * @return int
      */
-    public function recordsCount ()
+    public function recordsCount()
     {
         return $this->records->count();
     }
@@ -147,7 +147,7 @@ abstract class Writer implements Arrayable
     /**
      * @return array
      */
-    public function toArray ()
+    public function toArray()
     {
         return $this->records->toArray();
     }
@@ -156,12 +156,12 @@ abstract class Writer implements Arrayable
      * @param Record $record
      * @return $this
      */
-    abstract function writeRecord (Record $record);
+    abstract public function writeRecord(Record $record);
 
     /**
      * Write the full document
      */
-    public function write ()
+    public function write()
     {
         foreach ($this->records as $record) {
             $this->writeRecord($record);
@@ -169,6 +169,4 @@ abstract class Writer implements Arrayable
 
         return $this;
     }
-
-
 }

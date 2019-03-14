@@ -21,7 +21,7 @@ class DocumentTest extends TestCase
     /**
      * @test
      */
-    public function full_test ()
+    public function full_test()
     {
         $writer = new MemoryWriter();
         $writer->setCarriageReturn("\r\n");
@@ -49,7 +49,7 @@ class DocumentTest extends TestCase
         $writer->addRecord($record);
 
         $this->assertEquals(
-            file_get_contents( dirname(__FILE__) . '/data/IESEAC.txt'),
+            file_get_contents(dirname(__FILE__) . '/data/IESEAC.txt'),
             (string) $writer
         );
     }
@@ -57,7 +57,7 @@ class DocumentTest extends TestCase
     /**
      * @test
      */
-    public function full_test_product ()
+    public function full_test_product()
     {
         $writer = new MemoryWriter();
         $writer->setCarriageReturn("\r\n");
@@ -85,7 +85,7 @@ class DocumentTest extends TestCase
         $writer->addRecord($record);
 
         $this->assertEquals(
-            file_get_contents( dirname(__FILE__) . '/data/IESECP.txt'),
+            file_get_contents(dirname(__FILE__) . '/data/IESECP.txt'),
             (string) $writer
         );
     }
@@ -93,7 +93,7 @@ class DocumentTest extends TestCase
     /**
      * @test
      */
-    public function full_test_img ()
+    public function full_test_img()
     {
         $writer = new MemoryWriter();
         $writer->setCarriageReturn("\r\n");
@@ -121,7 +121,7 @@ class DocumentTest extends TestCase
         $writer->addRecord($record);
 
         $this->assertEquals(
-            file_get_contents( dirname(__FILE__) . '/data/IESIMG.txt'),
+            file_get_contents(dirname(__FILE__) . '/data/IESIMG.txt'),
             (string) $writer
         );
     }
@@ -129,7 +129,7 @@ class DocumentTest extends TestCase
     /**
      * @test
      */
-    public function test_tostring ()
+    public function test_tostring()
     {
         $writer = new MemoryWriter();
         $record = new Record($this->getTestRecordStructure());
@@ -138,7 +138,7 @@ class DocumentTest extends TestCase
 
         $writer->addRecord($record);
 
-        $this->assertEquals(40 + strlen($writer->getCarriageReturn()) , strlen((string) $writer));
+        $this->assertEquals(40 + strlen($writer->getCarriageReturn()), strlen((string) $writer));
 
         $record = new Record($this->getTestRecordStructure());
         $record->set('foo', '12345');
@@ -146,14 +146,14 @@ class DocumentTest extends TestCase
 
         $writer->addRecord($record);
 
-        $this->assertEquals(80 + ($writer->recordsCount() * strlen($writer->getCarriageReturn())) ,  strlen((string) $writer));
+        $this->assertEquals(80 + ($writer->recordsCount() * strlen($writer->getCarriageReturn())), strlen((string) $writer));
     }
 
     /**
      * @return RecordStructure
      * @throws WrongStart
      */
-    protected function getHeaderRecordStructure ()
+    protected function getHeaderRecordStructure()
     {
         $structure = (new RecordStructure())
             ->addField(new Field('id_tracciato', 20))
@@ -171,7 +171,7 @@ class DocumentTest extends TestCase
      * @return RecordStructure
      * @throws WrongStart
      */
-    protected function getHeaderRecordStructureImg ()
+    protected function getHeaderRecordStructureImg()
     {
         $structure = (new RecordStructure())
             ->addField(new Field('id_tracciato', 20))
@@ -191,7 +191,7 @@ class DocumentTest extends TestCase
      * @return RecordStructure
      * @throws WrongStart
      */
-    protected function getDetailRecordStructureProduct ()
+    protected function getDetailRecordStructureProduct()
     {
         $structure = (new RecordStructure())
             ->addField(new Field('azienda', 3))
@@ -213,7 +213,7 @@ class DocumentTest extends TestCase
      * @return RecordStructure
      * @throws WrongStart
      */
-    protected function getDetailRecordStructure ()
+    protected function getDetailRecordStructure()
     {
         $structure = (new RecordStructure())
             ->addField(new Field('azienda', 3))
@@ -238,7 +238,7 @@ class DocumentTest extends TestCase
      * @return RecordStructure
      * @throws WrongStart
      */
-    protected function getDetailRecordStructureImg ()
+    protected function getDetailRecordStructureImg()
     {
         $structure = (new RecordStructure())
             ->addField(new Field('marchio', 3))
@@ -257,7 +257,7 @@ class DocumentTest extends TestCase
      * @return $this
      * @throws WrongStart
      */
-    protected function getTestRecordStructure ()
+    protected function getTestRecordStructure()
     {
         $structure = (new RecordStructure())
             ->addField(new Field('foo', 20))

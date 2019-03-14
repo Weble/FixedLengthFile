@@ -2,7 +2,6 @@
 
 namespace Webleit\FixedLengthFile;
 
-
 /**
  * Class Field
  * @package Webleit\FixedLengthFile
@@ -24,7 +23,7 @@ class Field
      * @param string $name
      * @param $length
      */
-    public function __construct ($name, $length)
+    public function __construct($name, $length)
     {
         $this->name = $name;
         $this->length = $length;
@@ -33,7 +32,7 @@ class Field
     /**
      * @return int
      */
-    public function getLength ()
+    public function getLength()
     {
         return $this->length;
     }

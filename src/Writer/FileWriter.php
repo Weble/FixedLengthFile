@@ -18,7 +18,7 @@ class FileWriter extends Writer
     /**
      * Writer constructor.
      */
-    public function __construct ($file)
+    public function __construct($file)
     {
         parent::__construct();
 
@@ -29,7 +29,7 @@ class FileWriter extends Writer
      * @param Record $record
      * @return $this|void
      */
-    public function writeRecord (Record $record)
+    public function writeRecord(Record $record)
     {
         $resource = fopen($this->file, 'a');
         fwrite($resource, $this->getRecordContent($record));
@@ -39,7 +39,7 @@ class FileWriter extends Writer
     /**
      * @return $this|void
      */
-    public function write ()
+    public function write()
     {
         $resource = fopen($this->file, 'w');
         fwrite($resource, parent::write());

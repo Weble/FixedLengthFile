@@ -2,7 +2,6 @@
 
 namespace Webleit\FixedLengthFile;
 
-
 /**
  * Class RecordField
  * @package Webleit\FixedLengthFile
@@ -29,7 +28,7 @@ class RecordField
      * @param Field $field
      * @param int $start
      */
-    public function __construct (Field $field, $start = 0)
+    public function __construct(Field $field, $start = 0)
     {
         $this->start = $start;
         $this->field = $field;
@@ -55,7 +54,7 @@ class RecordField
     /**
      * @return Field
      */
-    public function getField ()
+    public function getField()
     {
         return $this->field;
     }

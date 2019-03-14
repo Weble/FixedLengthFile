@@ -20,7 +20,7 @@ class RecordTest extends TestCase
     /**
      * @test
      */
-    public function can_populate_fields ()
+    public function can_populate_fields()
     {
         $structure = $this->getRecordStructure();
 
@@ -37,9 +37,8 @@ class RecordTest extends TestCase
     /**
      * @test
      */
-    public function test_strict_mode ()
+    public function test_strict_mode()
     {
-
         $this->expectException(ValueTooLong::class);
 
         $structure = $this->getRecordStructure();
@@ -53,7 +52,7 @@ class RecordTest extends TestCase
     /**
      * @test
      */
-    public function test_strict_mode_off ()
+    public function test_strict_mode_off()
     {
         $structure = $this->getRecordStructure();
 
@@ -69,7 +68,7 @@ class RecordTest extends TestCase
      * @return $this
      * @throws WrongStart
      */
-    protected function getRecordStructure ()
+    protected function getRecordStructure()
     {
         $structure = (new RecordStructure())
             ->addField(new Field('foo', 20))

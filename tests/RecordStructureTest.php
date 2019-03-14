@@ -18,7 +18,7 @@ class RecordStructureTest extends TestCase
     /**
      * @test
      */
-    public function cannot_insert_overlapping_fields ()
+    public function cannot_insert_overlapping_fields()
     {
         $this->expectException(WrongStart::class);
 
@@ -30,7 +30,7 @@ class RecordStructureTest extends TestCase
     /**
      * @test
      */
-    public function cannot_insert_with_negative_start ()
+    public function cannot_insert_with_negative_start()
     {
         $this->expectException(WrongStart::class);
 
@@ -41,7 +41,7 @@ class RecordStructureTest extends TestCase
     /**
      * @test
      */
-    public function can_insert_not_overlapping_fields ()
+    public function can_insert_not_overlapping_fields()
     {
         $record = (new RecordStructure())
             ->addField(new Field('foo', 20))
@@ -53,7 +53,7 @@ class RecordStructureTest extends TestCase
     /**
      * @test
      */
-    public function can_insert_subsequent_fields ()
+    public function can_insert_subsequent_fields()
     {
         $record = (new RecordStructure())
             ->addField(new Field('foo', 20))
@@ -66,7 +66,7 @@ class RecordStructureTest extends TestCase
     /**
      * @test
      */
-    public function can_insert_spaced_fields ()
+    public function can_insert_spaced_fields()
     {
         $record = (new RecordStructure())
             ->addField(new Field('foo', 20))
@@ -79,7 +79,7 @@ class RecordStructureTest extends TestCase
     /**
      * @test
      */
-    public function calculates_end_correctly ()
+    public function calculates_end_correctly()
     {
         $record = (new RecordStructure())
             ->addField(new Field('foo', 20))
@@ -91,7 +91,7 @@ class RecordStructureTest extends TestCase
     /**
      * @test
      */
-    public function calculates_length_correctly ()
+    public function calculates_length_correctly()
     {
         $record = (new RecordStructure())
             ->addField(new Field('foo', 20))
