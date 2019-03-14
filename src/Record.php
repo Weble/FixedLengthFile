@@ -32,7 +32,7 @@ class Record implements Arrayable, \ArrayAccess
      * Record constructor.
      * @param RecordStructure $structure
      */
-    public function __construct (RecordStructure $structure)
+    public function __construct(RecordStructure $structure)
     {
         $this->structure = $structure;
         $this->values = collect([]);
@@ -41,7 +41,7 @@ class Record implements Arrayable, \ArrayAccess
     /**
      * @return $this
      */
-    public function enableStrictMode ()
+    public function enableStrictMode()
     {
         $this->strict = true;
         return $this;
@@ -50,7 +50,7 @@ class Record implements Arrayable, \ArrayAccess
     /**
      * @return $this
      */
-    public function disableStrictMode ()
+    public function disableStrictMode()
     {
         $this->strict = false;
         return $this;
@@ -59,7 +59,7 @@ class Record implements Arrayable, \ArrayAccess
     /**
      * @return bool
      */
-    public function isStrictModeEnabled ()
+    public function isStrictModeEnabled()
     {
         return $this->strict;
     }
@@ -72,7 +72,7 @@ class Record implements Arrayable, \ArrayAccess
      * @throws FieldNotPresentException
      * @throws ValueTooLong
      */
-    public function set ($key, $value)
+    public function set($key, $value)
     {
         if (!$this->structure->hasField($key)) {
             throw new FieldNotPresentException($key);
@@ -107,7 +107,7 @@ class Record implements Arrayable, \ArrayAccess
     /**
      * @return RecordStructure
      */
-    public function getStructure ()
+    public function getStructure()
     {
         return $this->structure;
     }
@@ -119,7 +119,7 @@ class Record implements Arrayable, \ArrayAccess
      * @throws FieldNotPresentException
      * @throws ValueTooLong
      */
-    public function __set ($name, $value)
+    public function __set($name, $value)
     {
         return $this->set($name, $value);
     }
@@ -128,7 +128,7 @@ class Record implements Arrayable, \ArrayAccess
      * @param $name
      * @return mixed
      */
-    public function __get ($name)
+    public function __get($name)
     {
         return $this->get($name);
     }
@@ -136,7 +136,7 @@ class Record implements Arrayable, \ArrayAccess
     /**
      * @return array
      */
-    public function toArray ()
+    public function toArray()
     {
         return $this->values->toArray();
     }
@@ -145,7 +145,7 @@ class Record implements Arrayable, \ArrayAccess
      * @param mixed $offset
      * @return bool
      */
-    public function offsetExists ($offset)
+    public function offsetExists($offset)
     {
         return $this->values->has($offset);
     }
@@ -154,7 +154,7 @@ class Record implements Arrayable, \ArrayAccess
      * @param mixed $offset
      * @return mixed
      */
-    public function offsetGet ($offset)
+    public function offsetGet($offset)
     {
         return $this->get($offset);
     }
@@ -166,7 +166,7 @@ class Record implements Arrayable, \ArrayAccess
      * @throws FieldNotPresentException
      * @throws ValueTooLong
      */
-    public function offsetSet ($offset, $value)
+    public function offsetSet($offset, $value)
     {
         $this->set($offset, $value);
     }
@@ -174,9 +174,8 @@ class Record implements Arrayable, \ArrayAccess
     /**
      * @param mixed $offset
      */
-    public function offsetUnset ($offset)
+    public function offsetUnset($offset)
     {
         return $this->values->offsetUnset($offset);
     }
-
 }

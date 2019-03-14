@@ -20,7 +20,7 @@ class RecordStructure
     /**
      * Record constructor.
      */
-    public function __construct ()
+    public function __construct()
     {
         $this->fields = collect([]);
     }
@@ -31,7 +31,7 @@ class RecordStructure
      * @return $this
      * @throws WrongStart
      */
-    public function addField (Field $field, $start = null)
+    public function addField(Field $field, $start = null)
     {
         if ($start === null && $this->fields->count() > 0) {
             $start = $this->fields->last()->end + 1;
@@ -76,7 +76,7 @@ class RecordStructure
     /**
      * @return Collection
      */
-    public function getFields ()
+    public function getFields()
     {
         return $this->fields;
     }
@@ -84,7 +84,7 @@ class RecordStructure
     /**
      * @return $this
      */
-    public function reorderFields ()
+    public function reorderFields()
     {
         $this->fields->sortBy('start');
         return $this;
@@ -105,5 +105,4 @@ class RecordStructure
     {
         return $this->fields->last()->end;
     }
-
 }
