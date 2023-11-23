@@ -3,7 +3,6 @@
   "description": "Fixed Length File for PHP",
   "license": "MIT",
   "keywords": ["fixed", "length", "file", "txt"],
-  "version": "2.2.1",
   "authors": [
     {
       "name": "Daniele Rosario",
