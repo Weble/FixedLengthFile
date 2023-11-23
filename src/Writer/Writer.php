@@ -2,7 +2,7 @@
 
 namespace Webleit\FixedLengthFile\Writer;
 
-use Arrayal
+use Illuminate\Contracts\Support\Arrayable;
 use Webleit\FixedLengthFile\Record;
 
 /**
@@ -22,7 +22,7 @@ abstract class Writer implements Arrayable
     protected $resource;
 
     /**
-     * @var \Tightenco\Collect\Support\Collection
+     * @var \Illuminate\Support\Collection
      */
     protected $records;
 
@@ -129,7 +129,7 @@ abstract class Writer implements Arrayable
     }
 
     /**
-     * @return \Tightenco\Collect\Support\Collection
+     * @return \Illuminate\Support\Collection
      */
     public function getRecords()
     {
