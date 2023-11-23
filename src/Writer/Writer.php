@@ -2,7 +2,7 @@
 
 namespace Webleit\FixedLengthFile\Writer;
 
-use Tightenco\Collect\Contracts\Support\Arrayable;
+use Arrayal
 use Webleit\FixedLengthFile\Record;
 
 /**
