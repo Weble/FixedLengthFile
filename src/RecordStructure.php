@@ -2,7 +2,7 @@
 
 namespace Webleit\FixedLengthFile;
 
-use Tightenco\Collect\Support\Collection;
+use Illuminate\Support\Collection;
 use Webleit\FixedLengthFile\Exception\WrongStart;
 
 /**

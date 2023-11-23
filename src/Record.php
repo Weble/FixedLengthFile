@@ -2,8 +2,8 @@
 
 namespace Webleit\FixedLengthFile;
 
-use Tightenco\Collect\Contracts\Support\Arrayable;
-use Tightenco\Collect\Support\Collection;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection;
 use Webleit\FixedLengthFile\Exception\FieldNotPresentException;
 use Webleit\FixedLengthFile\Exception\ValueTooLong;
 
